@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&family=Rubik&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+*, html { margin: 0; padding: 0; }
+
+:root {
+    --clr-surface: 0, 0%, 10%;
+    --clr-surface-container: 0, 0%, 8%;
+    --clr-surface-container-light: 0, 0%, 20%;
+
+    --clr-surface-on: 0, 0%, 80%;
+
+    
+    --clr-primary: 209, 69%, 43%;
+    --clr-primary-60: hsl(200, 63%, 45%);
+    --clr-primary-40: hsl(200, 63%, 30%);
+
+    --clr-accent-on: 0, 0%, 100%;
+    
+
+
+    --fs-100: 2rem;
+    --fs-90: 1.75rem;
+    --fs-80: 1.50rem;
+    --fs-70: 1.25rem;
+    --fs-60: 1.125rem;
+    --fs-50: 1rem;
+
+    /* --fs-xxl: 5rem;
+    --fs-xl: 3.5rem;
+    --fs-l: 2.5rem;
+    --fs-700: 1.75rem;
+    --fs-600: 1.5rem;
+    --fs-500: 1.25rem;
+    --fs-400: 1rem; */
+}
+
+body {
+    background-color: hsl(var(--clr-surface));
+    color: hsl(var(--clr-surface-on));
+
+    font-family: "Roboto", "sans-serif";
+}
+
+a {
+    color: hsl(var(--clr-surface-on));
+}
+
+img {
+    width: 100%;
+}
+
+button { 
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+}
+
+.flex { 
+    display: flex;
+    gap: var(--gap, 1rem);
+}
+
+.grid { 
+    display: grid;
+    gap: var(--gap, 1rem);
+}
+
+.container {
+    max-width: 1680px;
+}
+
+.primary-button {
+    background-color: hsl(var(--clr-primary));
+    color: hsl(var(--clr-accent-on));
+}
+
+.desktop { display: block; }
+.mobile { display: none; }
+
+@media (max-width: 46rem) {
+    .desktop { display: none; }
+    .mobile { display: block; }
+}
