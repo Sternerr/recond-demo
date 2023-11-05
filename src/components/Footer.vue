@@ -36,7 +36,7 @@
 
 <style>
     .default-footer {
-        position: absolute;
+        position: relative;
         display: flex;
         flex-direction: row;
 
