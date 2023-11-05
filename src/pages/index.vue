@@ -17,6 +17,17 @@
                 <Scroller />
             </div>  
         </div>
+        <div class="feature">
+            <div class="container flex">
+                <p>
+                    <span>Här på Recond återställer vi inte bara utseendet; vi skapar en upplevelse.
+                        Få känslan av ett fordon i perfektion och ett extra leende 
+                        - Boka din tid redan idag!
+                    </span>
+                </p>
+                <button class="primary-button">Boka här</button>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -27,13 +38,12 @@
     }
 
     .hero-wrapper {
-
         --gap: 125px;
 
         grid-template-columns: 0.9fr 1fr;
 
         max-width: 1280px;
-        margin: 180px auto;
+        margin: 128px auto;
 
         align-items: center;
     }
@@ -57,6 +67,30 @@
         background-color: hsl(var(--clr-primary));
     }
 
+    .feature {
+        padding: 0 32px;
+        background-color: hsl(var(--clr-surface-container));
+    }
+
+    .feature .container {
+        --gap: 32px;
+        flex-direction: column;
+
+        padding: 64px 0;
+        margin: 0 auto;
+
+        max-width: 1280px;
+    }
+
+    .feature .container p {
+        font-size: var(--fs-l);
+    }
+
+    .feature .container button {
+        width: 250px;
+        padding: 16px;
+    }
+
     @media (max-width: 62.5rem) {
         .hero-wrapper {
             --gap: 32px;
@@ -67,6 +101,18 @@
         .hero-wrapper {
             --gap: 64px;
             grid-template-columns: 1fr;
+
+            margin: 64px auto;
+        }
+
+        .feature .container p {
+            font-size: var(--fs-100);
+        }
+    }
+
+    @media (max-width: 35rem) {
+        .feature .container p {
+            font-size: var(--fs-70);
         }
     }
 </style>
