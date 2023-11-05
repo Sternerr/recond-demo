@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-    import gsap from "gsap";
+    import { gsap } from "gsap";
     const tl = gsap.timeline({ paused: true, reversed: true, });
     const menuState = ref(false)
 
