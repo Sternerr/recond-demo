@@ -34,6 +34,22 @@
     </footer>
 </template>
 
+<script setup lang="ts">
+    const props = defineProps({
+        absolute: {
+            type: String,
+        }
+    });
+
+    
+    onMounted(() => {
+        if(props.absolute === "true" && window.innerWidth >= 2000) {
+            document.querySelector(".default-footer").style.position = "absolute"
+            document.querySelector(".default-footer").style.bottom = "0"
+            document.querySelector(".default-footer").style.width = "100%"
+        }
+    })
+</script>
 <style>
     .default-footer {
         position: relative;

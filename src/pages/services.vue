@@ -27,6 +27,7 @@
             </div>
         </div>
     </div>
+    <Footer absolute="true"/>
 </template>
 
 <script setup lang="ts">
