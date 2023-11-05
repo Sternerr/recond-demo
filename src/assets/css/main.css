@@ -23,7 +23,8 @@
     --clr-accent-on: 0, 0%, 100%;
     
 
-
+    --fs-xl: 4rem;
+    --fs-l: 2.5rem;
     --fs-100: 2rem;
     --fs-90: 1.75rem;
     --fs-80: 1.50rem;
@@ -47,10 +48,12 @@ body {
     font-family: "Roboto", "sans-serif";
 }
 
+h1 { font-size: var(--fs-xl); }
 a {
     color: hsl(var(--clr-surface-on));
 }
 
+p { font-size: var(--fs-50); }
 img {
     width: 100%;
 }
@@ -60,6 +63,9 @@ button {
     padding: 10px;
     border: none;
     border-radius: 8px;
+
+    font-size: var(--fs-50);
+    font-weight: 500;
 }
 
 .flex { 
@@ -74,6 +80,7 @@ button {
 
 .container {
     max-width: 1680px;
+    margin: 0 auto;
 }
 
 .primary-button {
@@ -81,8 +88,20 @@ button {
     color: hsl(var(--clr-accent-on));
 }
 
+.primary-button-outlined {
+    border: 1px solid hsl(var(--clr-primary));
+    background: none;
+    color: hsl(var(--clr-primary));
+}
+
 .desktop { display: block; }
 .mobile { display: none; }
+
+
+@media (max-width: 62.5rem ) {
+    h1 { font-size: var(--fs-l); }
+
+}
 
 @media (max-width: 46rem) {
     .desktop { display: none; }
