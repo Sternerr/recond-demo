@@ -1,9 +1,9 @@
 <template>
     <div class="scroller">
         <div class="scroller__wrapper flex">
-            <img src="~/assets/img/landingheader.png" alt="">
-            <img src="~/assets/img/landingheader.png" alt="">
-            <img src="~/assets/img/landingheader.png" alt="">
+            <img src="~/assets/img/scroller/scroller_img1.jpg" alt="Photo by Olav Tvedt on Unsplash">
+            <img src="~/assets/img/scroller/scroller_img2.jpg" alt="Photo by Oliur on Unsplash">
+            <img src="~/assets/img/scroller/scroller_img3.jpg" alt="Photo by Adam Stefanca on Unsplash">
         </div>
         <div class="scroller__navigation-buttons flex">
             <div role="button" data-isVisible="true"></div>

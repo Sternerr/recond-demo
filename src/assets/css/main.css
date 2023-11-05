@@ -48,6 +48,9 @@ body {
 }
 
 h1 { font-size: var(--fs-xl); }
+h2 { font-size: var(--fs-l); }
+h3 { font-size: var(--fs-100); }
+
 a {
     color: hsl(var(--clr-surface-on));
 }
@@ -78,7 +81,7 @@ button {
 }
 
 .container {
-    max-width: 1680px;
+    max-width: 1920px;
     margin: 0 auto;
 }
 
@@ -97,6 +100,9 @@ button {
 .mobile { display: none; }
 
 
+@media (max-width: 120rem ) {
+    .container { max-width: 1280px; }
+}
 @media (max-width: 62.5rem ) {
     h1 { font-size: var(--fs-l); }
 

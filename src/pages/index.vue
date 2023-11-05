@@ -28,22 +28,27 @@
                 <button class="primary-button">Boka här</button>
             </div>
         </div>
+
+        <section class="landing-service container">
+            <h2>Vad gör vi?</h2>
+            <div class="card-container flex">
+                <ServiceCard />
+            </div>
+            <div class="landing-services-button">
+                <button type="button" onclick="window.location.href='/services'" class="primary-button">Utforska vår tjänster här</button>
+            </div>
+        </section>
     </div>
 </template>
 
 
 <style>
-    .hero {
-        padding: 0 32px;
-    }
-
     .hero-wrapper {
         --gap: 125px;
 
         grid-template-columns: 0.9fr 1fr;
-
-        max-width: 1280px;
         margin: 128px auto;
+        padding: 0 32px;
 
         align-items: center;
     }
@@ -78,8 +83,6 @@
 
         padding: 64px 0;
         margin: 0 auto;
-
-        max-width: 1280px;
     }
 
     .feature .container p {
@@ -89,6 +92,33 @@
     .feature .container button {
         width: 250px;
         padding: 16px;
+    }
+
+
+    .landing-service {
+        margin: 5em auto;
+        padding: 0 32px;
+    }
+
+    .landing-service .card-container {
+        --gap: 32px;
+        flex-direction: row;
+        margin-top: 5em;
+    }
+
+    .landing-services-button {
+        text-align: center;
+    }
+
+    .landing-services-button > button {
+        padding: 16px;
+        margin: 80px auto 0 auto;
+    }
+
+    @media (max-width: 80rem) {
+        .landing-service .card-container {
+            flex-direction: column;
+        }
     }
 
     @media (max-width: 62.5rem) {
@@ -111,6 +141,22 @@
     }
 
     @media (max-width: 35rem) {
+        .hero-wrapper {
+            padding: 0 16px;
+        }
+
+        .feature {
+            padding: 0 16px;
+        }
+
+        .feature .container button {
+            margin: 0 auto;
+        }
+
+        .landing-service {
+            padding: 0 16px;
+        }
+
         .feature .container p {
             font-size: var(--fs-70);
         }
