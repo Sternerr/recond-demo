@@ -35,7 +35,7 @@
                 <ServiceCard />
             </div>
             <div class="landing-services-button">
-                <NuxtLink to="/services"><button type="button" class="primary-button">Utforska vår tjänster här</button></NuxtLink>
+                <NuxtLink to="/services"><button type="button" class="primary-button">Utforska våra tjänster</button></NuxtLink>
             </div>
         </section>
     </div>
@@ -122,6 +122,8 @@
     .landing-services-button a { 
         display: block;
         margin: 80px auto 80px auto;
+
+        width: fit-content;
     }
 
     .landing-services-button  button {
