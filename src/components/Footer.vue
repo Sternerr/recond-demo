@@ -40,12 +40,9 @@
         display: flex;
         flex-direction: row;
 
-        bottom: 0; left: 0;
-
         color: hsl(var(--clr-neutral-50));
         background-color: hsl(var(--clr-surface-container));
 
-        justify-content: space-between;
 
         padding: 2em 0;
     }
