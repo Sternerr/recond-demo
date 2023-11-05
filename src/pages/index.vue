@@ -5,7 +5,7 @@
                 <div class="hero__info">
                     <h1>Ge din bil ett nytt leende</h1>
                     <p>
-                        Här på recond återställer vi inte bara utseendet; vi skapar en upplevelse. 
+                        Här på Rekond återställer vi inte bara utseendet; vi skapar en upplevelse. 
                         Vi ger ditt fordon den perfekta vården. 
                         Boka din tid redan idag och upplev känslan av ett fordon i perfektion.
                     </p>
@@ -20,7 +20,7 @@
         <div class="feature">
             <div class="container flex">
                 <p>
-                    <span>Här på Recond återställer vi inte bara utseendet; vi skapar en upplevelse.
+                    <span>Här på Rekond återställer vi inte bara utseendet; vi skapar en upplevelse.
                         Få känslan av ett fordon i perfektion och ett extra leende 
                         - Boka din tid redan idag!
                     </span>
