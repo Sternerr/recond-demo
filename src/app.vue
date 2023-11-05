@@ -9,4 +9,5 @@
 
 <script lang="ts">
   import "~/assets/css/main.css"
+
 </script>

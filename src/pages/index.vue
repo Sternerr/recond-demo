@@ -11,7 +11,7 @@
                     </p>
                     <div class="hero__info__button flex">
                         <div class="line"></div>
-                        <button class="primary-button-outlined">Boka Här</button>
+                        <button @click="alertButton" class="primary-button-outlined">Boka Här</button>
                     </div>
                 </div>
                 <Scroller />
@@ -25,7 +25,7 @@
                         - Boka din tid redan idag!
                     </span>
                 </p>
-                <button class="primary-button">Boka här</button>
+                <button @click="alertButton" class="primary-button">Boka här</button>
             </div>
         </div>
 
@@ -35,14 +35,23 @@
                 <ServiceCard />
             </div>
             <div class="landing-services-button">
-                <button type="button" onclick="window.location.href='/services'" class="primary-button">Utforska vår tjänster här</button>
+                <NuxtLink to="/services"><button type="button" class="primary-button">Utforska vår tjänster här</button></NuxtLink>
             </div>
         </section>
     </div>
 </template>
 
+<script setup lang="ts">
+    const alertButton = () => {
+        alert("Boka här knapparna är inaktiverade då syftet är att de ska omdirigera till ett separat bokningssystem som ej implementerats")
+    }
+</script>
 
 <style>
+    .hero {
+        margin-top: 120px;
+    }
+    
     .hero-wrapper {
         --gap: 125px;
 
@@ -110,10 +119,16 @@
         text-align: center;
     }
 
-    .landing-services-button > button {
-        padding: 16px;
-        margin: 80px auto 0 auto;
+    .landing-services-button a { 
+        display: block;
+        margin: 80px auto 80px auto;
     }
+
+    .landing-services-button  button {
+        padding: 16px;
+    }
+
+
 
     @media (max-width: 80rem) {
         .landing-service .card-container {

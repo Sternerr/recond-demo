@@ -52,6 +52,7 @@ h2 { font-size: var(--fs-l); }
 h3 { font-size: var(--fs-100); }
 
 a {
+    text-decoration: none;
     color: hsl(var(--clr-surface-on));
 }
 

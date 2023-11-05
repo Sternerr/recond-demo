@@ -1,19 +1,19 @@
 <template>
     <header class="primary-header desktop">
         <nav class="container flex">
-            <span class="logo">Rekond</span>
+            <NuxtLink to="/"><span class="logo">Rekond</span></NuxtLink>
 
             <ul class="primary-navigation flex">
-                <li><NuxtLink>Tjänster</NuxtLink></li>
-                <li><button class="primary-button">Boka här</button></li>
+                <li><NuxtLink to="/services">Tjänster</NuxtLink></li>
+                <li><button @click="alertButton" class="primary-button">Boka här</button></li>
             </ul>
         </nav>
     </header>
     <header class="primary-header mobile">
         <nav class="container flex">
-            <span class="logo">Rekond</span>
+            <NuxtLink @click="setMenuState('logo')" to="/"><span class="logo">Rekond</span></NuxtLink>
 
-            <div @click="setMenuState" class="hamburger flex" :aria-expanded="menuState">
+            <div @click="setMenuState()" class="hamburger flex" :aria-expanded="menuState">
                 <div></div>
                 <div></div>
                 <div></div>
@@ -21,8 +21,8 @@
         </nav>
     </header>
     <ul id="primary-navigation" class="primary-navigation flex mobile">
-        <li><NuxtLink>Tjänster</NuxtLink></li>
-        <li><button class="primary-button">Boka här</button></li>
+        <li><NuxtLink to="/services" @click="setMenuState">Tjänster</NuxtLink></li>
+        <li><button @click="alertButton" class="primary-button">Boka här</button></li>
     </ul>
 </template>
 
@@ -30,21 +30,29 @@
     import gsap from "gsap";
     const tl = gsap.timeline({ paused: true, reversed: true, });
     const menuState = ref(false)
-    
+
+    const alertButton = () => {
+        alert("Boka här knapparna är inaktiverade då syftet är att de ska omdirigera till ett separat bokningssystem som ej implementerats")
+    }
+
     const toggleMenu = () => {
         const nav = document.querySelector("#primary-navigation");
 
         tl.to(nav, {
             height: "100%",
-            duration: 1,
+            duration: 0.25,
         })
         .to("#primary-navigation li", {
             opacity: 1,
-            duration: 0.5,
-        }, 0.25)
+            duration: 0.35,
+        }, 0.125)
     }
 
-    const setMenuState = () => {
+    const setMenuState = (el: string = "") => {
+        if(el === "logo" && menuState.value === false) {
+            return
+        }
+
         menuState.value = !menuState.value
 
         if(tl.reversed()) {
@@ -59,7 +67,12 @@
 
 <style>
     .primary-header {
-        position: relative;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        z-index: 9900;
+
+        background-color: hsl(var(--clr-surface));
     }
 
     .primary-header::after {
@@ -121,6 +134,7 @@
 
         .primary-navigation {
             position: fixed;
+            top: 62px;
             width: 100%;
             height: 0%;
 
@@ -130,6 +144,7 @@
 
             justify-content: center;
             align-items: center; 
+            z-index: 9970;
         }
 
         .primary-navigation li {
