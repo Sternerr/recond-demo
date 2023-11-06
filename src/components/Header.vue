@@ -13,7 +13,7 @@
         <nav class="container flex">
             <NuxtLink @click="setMenuState('logo')" to="/"><span class="logo">Rekond</span></NuxtLink>
 
-            <div @click="setMenuState()" class="hamburger flex" :aria-expanded="menuState">
+            <div @click="setMenuState()" class="hamburger flex" aria-role="button" aria-controls="primary-navigation" :aria-expanded="menuState">
                 <div></div>
                 <div></div>
                 <div></div>
