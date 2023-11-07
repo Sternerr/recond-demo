@@ -22,8 +22,11 @@
                     </a>
                 </div>
                 <div class="default-footer-socialmedia">
-                    <NuxtLink to="" target="blank"><img src="~/assets/img/icon/facebook.png" alt="facebook"></NuxtLink>
-                    <NuxtLink to="" target="blank"><img src="~/assets/img/icon/instagram.png" alt="instagram"></NuxtLink>
+                    <div class="flex">
+                        <NuxtLink to="" target="blank"><img src="~/assets/img/icon/facebook.png" alt="facebook"></NuxtLink>
+                        <NuxtLink to="" target="blank"><img src="~/assets/img/icon/instagram.png" alt="instagram"></NuxtLink>
+                    </div>
+                    <span>Skapad av <a href="http://www.noahsterner.se" target="blank">noahsterner.se</a></span>
                 </div>
             </div>
             <!-- <div class="map">
@@ -51,6 +54,8 @@
         flex-direction: row;
         justify-content: space-between;
 
+        padding: 0 32px;
+
         width: 100%;
         margin: 0 auto;
     }
@@ -59,10 +64,13 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
+
+        width: 100%;
     }
 
     .default-footer .container .default-footer-socialmedia a {
-        width: 42px
+        display: block;
+        width: 42px;
     }
     .default-footer .container > .default-footer-info > a > img { width: 100%; }
     
@@ -79,7 +87,7 @@
     .default-footer .container > .default-footer-info > .contact > a {
         display: flex;
         gap: 25px;
-
+        width: fit-content;
         font-size: var(--fs-400);
         cursor: pointer;
         
@@ -104,13 +112,25 @@
 
     .default-footer .container > .default-footer-info > .default-footer-socialmedia {
         display: flex;
+        justify-content: space-between;
+        align-items: center;
         gap: 1em;
+        min-width: 100%;
     }
 
-    .default-footer .container > .default-footer-info > .default-footer-socialmedia > img {
+    .default-footer .container > .default-footer-info > .default-footer-socialmedia > div > img {
         width: 30px;
         cursor: pointer;
     }
+
+    .default-footer .container > .default-footer-info > .default-footer-socialmedia > span {
+        width: fit-content;
+        padding-right: 32px;
+    } 
+
+    .default-footer .container > .default-footer-info > .default-footer-socialmedia > span > a{
+        color: hsl(var(--clr-primary));
+    } 
 
     @media screen and (max-width: 1280px) {
         .default-footer {
