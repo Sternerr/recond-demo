@@ -1,17 +1,20 @@
 <template>
     <header class="primary-header desktop">
+
         <nav class="container flex">
-            <NuxtLink to="/"><span class="logo">Rekond</span></NuxtLink>
+            <NuxtLink to="/"><img :src="data.fields.logotype.fields.file.url" alt="Logotyp" /></NuxtLink>
 
             <ul class="primary-navigation flex">
-                <li><NuxtLink to="/services">Tjänster</NuxtLink></li>
-                <li><button @click="alertButton" class="primary-button">Boka här</button></li>
+                <li><NuxtLink to="/tjanster">Tjänster</NuxtLink></li>
+                <li><button @click="" class="primary-button">Boka här</button></li>
             </ul>
         </nav>
+
     </header>
     <header class="primary-header mobile">
+
         <nav class="container flex">
-            <NuxtLink @click="setMenuState('logo')" to="/"><span class="logo">Rekond</span></NuxtLink>
+            <NuxtLink to="/"><img :src="data.fields.logotype.fields.file.url" alt="Logotyp" /></NuxtLink>
 
             <div @click="setMenuState()" class="hamburger flex" aria-role="button" aria-controls="primary-navigation" :aria-expanded="menuState">
                 <div></div>
@@ -19,21 +22,28 @@
                 <div></div>
             </div>
         </nav>
+        
     </header>
+
     <ul id="primary-navigation" class="primary-navigation flex mobile">
-        <li><NuxtLink to="/services" @click="setMenuState">Tjänster</NuxtLink></li>
-        <li><button @click="alertButton" class="primary-button">Boka här</button></li>
+        <li><NuxtLink to="/tjanster" @click="setMenuState">Tjänster</NuxtLink></li>
+        <li><button @click="" class="primary-button">{{ data.fields.button }}</button></li>
     </ul>
 </template>
 
 <script setup lang="ts">
     import { gsap } from "gsap";
+    import type { HeaderType } from "~/plugin/contentful";
+
+    const props = defineProps({
+        data: Object
+    })
+
+    const data = props.data?.find((i: any) => i.fields.singletonID === 1 );
+
     const tl = gsap.timeline({ paused: true, reversed: true, });
     const menuState = ref(false)
 
-    const alertButton = () => {
-        alert("Boka här knapparna är inaktiverade då syftet är att de ska omdirigera till ett separat bokningssystem som ej implementerats")
-    }
 
     const toggleMenu = () => {
         const nav = document.querySelector("#primary-navigation");
@@ -74,7 +84,6 @@
 
         background-color: hsl(var(--clr-surface));
     }
-
     .primary-header::after {
         content: "";
         position: absolute;
@@ -91,7 +100,10 @@
         align-items: center;
     }
 
-    .primary-header .container span { font-size: var(--fs-70); }
+    .primary-header img {
+        width: 100px;
+    }
+
 
     .primary-header .container .primary-navigation {
         list-style: none;

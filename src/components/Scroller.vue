@@ -1,10 +1,9 @@
 <template>
     <div class="scroller">
         <div class="scroller__wrapper flex">
-            <img src="~/assets/img/scroller/scroller_img1.jpg" alt="Photo by Olav Tvedt on Unsplash">
-            <img src="~/assets/img/scroller/scroller_img2.jpg" alt="Photo by Oliur on Unsplash">
-            <img src="~/assets/img/scroller/scroller_img3.jpg" alt="Photo by Adam Stefanca on Unsplash">
+            <img v-for="(item, index) in props.data" :src="item.fields.file.url" :alt="item.description ">
         </div>
+
         <div class="scroller__navigation-buttons flex">
             <div role="button" data-isVisible="true"></div>
             <div role="button" data-isVisible="false"></div>
@@ -14,6 +13,10 @@
 </template>
 
 <script setup lang="ts">
+    const props = defineProps({
+        data: Object
+    })
+
     const currentIndex = ref(0);
 
     const setSlidePosition = (index: number): number => {

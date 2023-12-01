@@ -3,36 +3,29 @@
         <div class="hero container">
             <div class="hero-wrapper grid">
                 <div class="hero__info">
-                    <h1>Ge din bil ett nytt leende</h1>
-                    <p>
-                        Här på Rekond återställer vi inte bara utseendet; vi skapar en upplevelse. 
-                        Vi ger ditt fordon den perfekta vården. 
-                        Boka din tid redan idag och upplev känslan av ett fordon i perfektion.
-                    </p>
+                    <h1>{{ data?.fields.heroTitle }}</h1>
+                    <p>{{ data?.fields.heroDesc }} </p>
                     <div class="hero__info__button flex">
                         <div class="line"></div>
-                        <button @click="alertButton" class="primary-button-outlined">Boka Här</button>
+                        <button @click="" class="primary-button-outlined">{{ data?.fields.heroButton }} </button>
                     </div>
                 </div>
-                <Scroller />
+                <Scroller :data="data?.fields.heroCarousel"/>
             </div>  
         </div>
         <div class="feature">
             <div class="container flex">
                 <p>
-                    <span>Här på Rekond återställer vi inte bara utseendet; vi skapar en upplevelse.
-                        Få känslan av ett fordon i perfektion och ett extra leende 
-                        - Boka din tid redan idag!
-                    </span>
+                    <span>{{ data?.fields.featureText }}</span>
                 </p>
-                <button @click="alertButton" class="primary-button">Boka här</button>
+                <button @click="" class="primary-button">{{ data?.fields.featureButton }}</button>
             </div>
         </div>
 
         <section class="landing-service container">
-            <h2>Vad gör vi?</h2>
+            <h2>{{ data?.fields.serviceTitle }}</h2>
             <div class="card-container flex">
-                <ServiceCard />
+                <ServiceCard :data="data?.fields.services"/>
             </div>
             <div class="landing-services-button">
                 <NuxtLink to="/services"><button type="button" class="primary-button">Utforska våra tjänster</button></NuxtLink>
@@ -43,9 +36,19 @@
 </template>
 
 <script setup lang="ts">
-    const alertButton = () => {
-        alert("Boka här knapparna är inaktiverade då syftet är att de ska omdirigera till ett separat bokningssystem som ej implementerats")
-    }
+    import type { HomePageType } from "~/plugin/contentful";
+    import { getData } from "~/plugin/contentful";
+
+    const entry = await getData<HomePageType>("homepage")
+    .then(res => res.items.map(item => {
+        if(item.fields.singletonId === 1) {
+            return item;
+        }
+    }));
+
+    const data = entry.find((i: any) => i.fields.singletonId === 1 );
+
+    // console.log(data?.fields.services)
 </script>
 
 <style>

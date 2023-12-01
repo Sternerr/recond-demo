@@ -1,48 +1,22 @@
 <template>
-    <div class="service-card flex">
+    <div v-for="(item, index) in props.data" class="service-card flex">
         <div class="block-info flex">
-            <h3>Rekonditionering</h3>
+            <h3>{{ item.fields.title }}</h3>
             <p>
-                <span>En komplett fordonsvård som lyfter fram dess skönhet både inuti och utanpå. 
-                    Med vår noggranna rengöring, professionella vaxning och polering får du inte bara en skinande glans, 
-                    utan du förlänger även bilens livslängd.
-                </span>
+                <span>{{ item.fields.description }}</span>
             </p>
         </div>
         <div class="block-img">
-            <img id="serviceCardImage" src="~/assets/img/service/service_img1.jpg" alt="Photo by Olav Tvedt on Unsplash">
-        </div>
-    </div>
-    <div class="service-card flex">
-        <div class="block-info flex">
-            <h3>Keramiskt Lackskydd</h3>
-            <p>
-                <span>En komplett fordonsvård som lyfter fram dess skönhet både inuti och utanpå. 
-                    Med vår noggranna rengöring, 
-                    professionella vaxning och polering får du inte bara en skinande glans, 
-                    utan du förlänger även bilens livslängd.
-                </span>
-            </p>
-        </div>
-        <div class="block-img">
-            <img id="serviceCardImage" src="~/assets/img/service/service_img2.jpg" alt="Photo by Amr Taha™ on Unsplash">
-        </div>
-    </div> 
-    <div class="service-card flex">
-        <div class="block-info flex">
-            <h3>Ozonbehandling</h3>
-            <p>
-                <span>Eliminerar dålig lukt, oangenäma dofter samt mikroorgansimer från ditt fordon. 
-                    Genom att ta bort mögelsporer och bakterier som 
-                    ofta trivs i trånga utrymmen blir ditt fordon luktfritt.
-                </span>
-            </p>
-        </div>
-        <div class="block-img">
-            <img id="serviceCardImage" src="~/assets/img/service/service_img3.jpg" alt="Photo by Aaron Burden on Unsplash">
+            <img id="serviceCardImage" :src="item.fields.file.url">
         </div>
     </div> 
 </template>
+
+<script setup>
+    const props = defineProps({
+        data: Object
+    })
+</script>
 
 <style>
     .service-card {

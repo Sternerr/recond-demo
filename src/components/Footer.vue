@@ -2,40 +2,57 @@
     <footer class="default-footer">
         <div class="container flex">
             <div class="default-footer-info">
-                <h1>Rekond</h1>
+                <NuxtLink to="/"><img class="logo" :src="data?.fields.logotype.fields.file.url" alt="Logotyp" /></NuxtLink>
                 <div class="contact">
                     <a>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z"/></svg>
-                        1234567890
+                        {{ data?.fields.phonenumber }}
                     </a>
                     <a>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
-                        recond@demo.com
+                        {{ data?.fields.email }}
+
                     </a>
-                    <a target="_blank">
+                    <NuxtLink :to="data?.fields.googleMapLocation" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 14c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6z"/></svg>
-                        Demo 1, demo
-                    </a>
+                        {{ data?.fields.address }}
+
+                    </NuxtLink>
                     <a style="cursor: default;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm7 14h-8v-9h2v7h6v2z"/></svg>
-                        Vardag 07:00 - 17:00
+                        {{ data?.fields.timeOpen }}
                     </a>
                 </div>
                 <div class="default-footer-socialmedia">
                     <div class="flex">
-                        <NuxtLink to="" target="blank"><img src="~/assets/img/icon/facebook.png" alt="facebook"></NuxtLink>
-                        <NuxtLink to="" target="blank"><img src="~/assets/img/icon/instagram.png" alt="instagram"></NuxtLink>
+                        <NuxtLink :to="data?.fields.facebook" target="_blank"><img src="~/assets/img/icon/facebook.png" alt="facebook"></NuxtLink>
+                        <NuxtLink :to="data?.fields.instagram" target="_blank"><img src="~/assets/img/icon/instagram.png" alt="instagram"></NuxtLink>
                     </div>
-                    <span>Skapad av <a href="http://www.noahsterner.se" target="blank">noahsterner.se</a></span>
                 </div>
             </div>
-            <!-- <div class="map">
+            <div class="map">
                 <iframe width="350" height="200" style="border:0; border-radius: 15px;" loading="lazy" allowfullscreen
                 src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJFxQouCj7WUYRUunvJ8ekoAA&key=AIzaSyBdYU-_GH0crB5ube-EjjEYx404dDpSntc&zoom=13" title="google maps"></iframe>
-            </div> -->
+            </div>
         </div>
     </footer>
 </template>
+
+
+<script setup lang="ts">
+  import type { FooterType } from "~/plugin/contentful";
+  import { getData } from "~/plugin/contentful";
+
+  const entry = await getData<FooterType>("footer")
+  .then(res => res.items.map(item => {
+        if(item.fields.singletonID === 1) {
+            return item;
+        }
+  }));
+
+  const data = entry.find((i: any) => i.fields.singletonID === 1);
+
+</script>
 
 <style>
     .default-footer {
@@ -49,7 +66,9 @@
 
         padding: 2em 0;
     }
-
+    .default-footer a { width: 100px; }
+    .default-footer a .logo { width: 100px;}
+    
     .default-footer .container {
         flex-direction: row;
         justify-content: space-between;
