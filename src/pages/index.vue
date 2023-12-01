@@ -1,26 +1,30 @@
 <template>
-    <div class="landing">
-        <div class="hero container">
+    <main class="landing">
+
+        <section class="hero container">
             <div class="hero-wrapper grid">
                 <div class="hero__info">
                     <h1>{{ data?.fields.heroTitle }}</h1>
                     <p>{{ data?.fields.heroDesc }} </p>
                     <div class="hero__info__button flex">
                         <div class="line"></div>
-                        <button @click="" class="primary-button-outlined">{{ data?.fields.heroButton }} </button>
+                        <NuxtLink to="https://ekholmsrekond.bokamera.se/book" target="_blank">
+                            <button @click="" class="primary-button-outlined">{{ data?.fields.heroButton }} </button>
+                        </NuxtLink>
                     </div>
                 </div>
                 <Scroller :data="data?.fields.heroCarousel"/>
-            </div>  
-        </div>
-        <div class="feature">
+            </div> 
+        </section>
+
+        <section class="feature">
             <div class="container flex">
                 <p>
                     <span>{{ data?.fields.featureText }}</span>
                 </p>
-                <button @click="" class="primary-button">{{ data?.fields.featureButton }}</button>
+                <NuxtLink to="https://ekholmsrekond.bokamera.se/book" target="_blank"><button @click="" class="primary-button">{{ data?.fields.featureButton }}</button></NuxtLink>
             </div>
-        </div>
+        </section>
 
         <section class="landing-service container">
             <h2>{{ data?.fields.serviceTitle }}</h2>
@@ -31,7 +35,8 @@
                 <NuxtLink to="/services"><button type="button" class="primary-button">Utforska våra tjänster</button></NuxtLink>
             </div>
         </section>
-    </div>
+
+    </main>
     <Footer />
 </template>
 
@@ -48,26 +53,29 @@
 
     const data = entry.find((i: any) => i.fields.singletonId === 1 );
 
-    // console.log(data?.fields.services)
+    function book() {
+        window.open("https://ekholmsrekond.bokamera.se/book")
+    }
 </script>
 
 <style>
     .hero {
-        margin-top: 120px;
+        min-height: 100svh; 
     }
     
     .hero-wrapper {
         --gap: 125px;
 
         grid-template-columns: 0.9fr 1fr;
-        margin: 128px auto;
-        padding: 0 32px;
+        margin: auto 0 auto;
+        padding: 230px 32px;
 
         align-items: center;
     }
 
     .hero-wrapper .hero__info p {
         margin-top: 16px;
+        font-size: var(--fs-70);
     }
 
     .hero-wrapper .hero__info .hero__info__button {
@@ -110,7 +118,7 @@
 
     .landing-service {
         margin: 5em auto;
-        padding: 0 32px;
+        padding: 100px 32px;
     }
 
     .landing-service .card-container {

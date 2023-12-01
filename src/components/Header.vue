@@ -6,7 +6,11 @@
 
             <ul class="primary-navigation flex">
                 <li><NuxtLink to="/tjanster">Tjänster</NuxtLink></li>
-                <li><button @click="" class="primary-button">Boka här</button></li>
+                <li>
+                    <NuxtLink to="https://ekholmsrekond.bokamera.se/book" target="_blank">
+                        <button @click="" class="primary-button">Boka här</button>
+                    </NuxtLink>
+                </li>
             </ul>
         </nav>
 

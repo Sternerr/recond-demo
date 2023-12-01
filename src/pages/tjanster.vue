@@ -5,36 +5,33 @@
         </div>
 
         <div class="card-container flex">
-            <div class="card flex">
+            <div v-for="(item, index) in entries" class="card flex">
                 <div class="card-info flex">
-                    <h4>Utvändig Rekond</h4>  
-                    <p>Avfettning; skonsam rengöring av fälgar, dörrgångar och karros; vaxning och polering av lack.</p>
+                    <h4>{{ item.fields.title }}</h4>  
+                    <p>{{ item.fields.description }}</p>
                 </div>
                 <div class="block flex">
-                    <p>Pris: 1999 kr</p>
-                    <button @click="alertButton" class="primary-button">Boka</button>
-                </div>
-            </div>
-            <div class="card flex">
-                <div class="card-info flex">
-                    <h4>Utvändig Rekond</h4>  
-                    <p>Avfettning; skonsam rengöring av fälgar, dörrgångar och karros; vaxning och polering av lack.</p>
-                </div>
-                <div class="block flex">
-                    <p>Pris: 1999 kr</p>
-                    <button @click="alertButton" class="primary-button">Boka</button>
+                    <p>{{ item.fields.price }} kr</p>
+                    <!-- <button class="primary-button">Boka</button> -->
                 </div>
             </div>
         </div>
     </div>
-    <Footer absolute="true"/>
+    <Footer absolute="true" />
 </template>
 
 <script setup lang="ts">
-    const alertButton = () => {
-        alert("Boka här knapparna är inaktiverade då syftet är att de ska omdirigera till ett separat bokningssystem som ej implementerats")
-    }
+    import type { ServiceType } from "~/plugin/contentful";
+    import { getData } from "~/plugin/contentful";
+
+    const entries = await getData<ServiceType>("services")
+    .then(res => res.items.map(item => {
+        return item;
+    }));
+
+    console.log(entries[0].fields)
 </script>
+
 <style>
     .service-container {
         max-width: 1280px;

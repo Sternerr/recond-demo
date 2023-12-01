@@ -47,8 +47,9 @@
     }
     
     .service-card .block-img {
-        width: inherit;
-        min-height: 600px;
+        width: 100%;
+
+        min-height: fit-content;
         max-height: 600px;
 
         border-radius: inherit;
@@ -57,8 +58,8 @@
     .block-img img {
         border-radius: inherit;
 
-        height: 100%;
-        max-width: 100%;
+        height: 300px;
+        min-width: 100%;
         object-fit: cover;
     }
 

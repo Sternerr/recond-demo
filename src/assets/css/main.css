@@ -90,11 +90,19 @@ button {
     background-color: hsl(var(--clr-primary));
     color: hsl(var(--clr-accent-on));
 }
+.primary-button:hover {
+    opacity: 0.75;
+}
 
 .primary-button-outlined {
     border: 1px solid hsl(var(--clr-primary));
     background: none;
     color: hsl(var(--clr-primary));
+}
+
+.primary-button-outlined:hover {
+    transform: scale(1.05);
+    transition: transform 150ms;
 }
 
 .desktop { display: block; }

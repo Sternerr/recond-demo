@@ -50,6 +50,16 @@ export type HomePageType = {
     }
 }
 
+export type ServiceType = {
+    contentTypeId: "services",
+    fields: {
+        title: EntryFieldTypes.Symbol,
+        description: EntryFieldTypes.Text,
+        price: EntryFieldTypes.Symbol,
+        isActive: EntryFieldTypes.Boolean,
+    }
+}
+
 export const getData = async<T extends contentful.EntrySkeletonType>(contentModel: string) => {
     return await client.getEntries<T>({
         content_type: contentModel
